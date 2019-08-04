@@ -1,0 +1,12 @@
+//ACCESSORIES MAY ALREADY EXIST IN YOUR CONFIG
+"accessories": [
+	{
+		"accessory": "DavisWeatherLinkLive",
+		"manufacturer": "Davis",
+		"name": "Temperature and Humidity",
+		"model": "Davis Weather",
+		"url": "http://10.0.0.100/v1/current_conditions",
+		"pollingIntervalSeconds": 20,
+		"temperatureUnitOfMeasure": "C"
+	}
+]
