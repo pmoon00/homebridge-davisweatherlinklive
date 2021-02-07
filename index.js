@@ -1,5 +1,6 @@
 var Service, Characteristic;
 var request = require("request");
+import Logging from "Logging";
 
 module.exports = function (homebridge) {
     Service = homebridge.hap.Service;
@@ -17,9 +18,11 @@ function DavisWeatherLinkLive(log, config) {
 	this.model = config["model"] || "Default";
 	this.pollingIntervalSeconds = parseInt(config["pollingIntervalSeconds"] || 300);
 	this.temperatureUnitOfMeasure = (config["temperatureUnitOfMeasure"] || "C").toUpperCase();
+	this.logLevel = (config["logLevel"] || Logging.LOG_LEVEL.Info;
 	this._timeoutID = -1;
 	this._cachedData = { "temperature": 0, "humidity": 0 };
 
+	this.logger = new this.logger(log, config.logLevel);
 	this.getData(this.url);
 }
 

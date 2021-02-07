@@ -3,10 +3,30 @@
 	{
 		"accessory": "DavisWeatherLinkLive",
 		"manufacturer": "Davis",
-		"name": "Temperature and Humidity",
+		"name": "Temperature, Humidity, and Air Quality",
 		"model": "Davis Weather",
-		"url": "http://10.0.0.100/v1/current_conditions",
+		"dataPoints": {
+			"apiOne": "http://10.0.0.100/v1/current_conditions",
+			"apiTwo": "http://10.0.0.200/v1/current_conditions"
+		},
+		"tempService": {
+			"dataPoint": "apiOne",
+			"jsonPath": "$.data.conditions[0].temp"
+		},
+		"humidityService": {
+			"dataPoint": "apiOne",
+			"jsonPath": "$.data.conditions[0].hum"
+		},
+		"airQualityPM2p5Service": {
+			"dataPoint": "apiTwo",
+			"jsonPath": "$.data.conditions[0].pm_2p5"
+		},
+		"airQualityPM10Service": {
+			"dataPoint": "apiTwo",
+			"jsonPath": "$.data.conditions[0].pm_10"
+		},
 		"pollingIntervalSeconds": 20,
-		"temperatureUnitOfMeasure": "C"
+		"temperatureUnitOfMeasure": "C",
+		"logLevel": "debug"
 	}
 ]
